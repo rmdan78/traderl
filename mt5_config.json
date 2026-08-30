@@ -1,0 +1,32 @@
+{
+  "trading": {
+    "symbol": "BTCUSD",
+    "timeframe": "H1",
+    "lot_size": 0.01,
+    "magic_number": 8882026,
+    "order_comment": "RL_Agent_v2",
+    "max_spread_points": 2000,
+    "slippage_points": 20
+  },
+  "risk_management": {
+    "sl_atr_multiplier": 2.0,
+    "tp_atr_multiplier": 3.0,
+    "trailing_breakeven_atr": 1.0,
+    "trailing_lock_profit_atr": 2.0,
+    "max_account_drawdown_pct": 15.0,
+    "max_daily_loss_usd": 100.0,
+    "emergency_close_on_max_dd": true
+  },
+  "agent": {
+    "model_path": "models/best_model.zip",
+    "min_candles_warmup": 500,
+    "rolling_zscore_window": 252,
+    "initial_balance_ref": 1000.0
+  },
+  "execution": {
+    "bar_close_execution_only": true,
+    "intrabar_trailing_check_sec": 3,
+    "reconnect_interval_sec": 5,
+    "heartbeat_interval_sec": 60
+  }
+}

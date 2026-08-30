@@ -1,0 +1,23 @@
+[Unit]
+Description=MT5 AI Reinforcement Learning Live Trading Agent
+After=network.target network-online.target
+Wants=network-online.target
+
+[Service]
+Type=simple
+User=root
+WorkingDirectory=/root/reinforcement
+Environment="DISPLAY=:99"
+Environment="WINEPREFIX=/root/.wine"
+Environment="WINEDEBUG=-all"
+ExecStartPre=/bin/sh -c 'pgrep -x Xvfb > /dev/null || Xvfb :99 -screen 0 1024x768x16 -nolisten tcp &'
+ExecStart=/usr/bin/wine python mt5_live_trader.py --mode DEMO
+Restart=always
+RestartSec=10
+KillMode=mixed
+TimeoutStopSec=30
+StandardOutput=journal
+StandardError=journal
+
+[Install]
+WantedBy=multi-user.target
